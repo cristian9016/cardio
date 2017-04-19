@@ -1,10 +1,7 @@
 package proyecto.com.cardio;
 
-import android.content.Context;
-import android.content.Intent;
-import android.support.design.widget.TabLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -13,19 +10,17 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class Main2Activity extends AppCompatActivity {
 
 
     /**
@@ -46,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -58,19 +53,13 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
-        tabLayout.getTabAt(0).setIcon(getResources().getDrawable(R.drawable.ic_retos));
-        tabLayout.getTabAt(1).setIcon(getResources().getDrawable(R.drawable.ic_teoria));
-        tabLayout.getTabAt(2).setIcon(getResources().getDrawable(R.drawable.ic_compara));
-
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_main2, menu);
         return true;
     }
 
@@ -118,34 +107,33 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-
-            View rootView = null;
-            ListView lv1;
-            switch (getArguments().getInt(ARG_SECTION_NUMBER)){
-                case 1:
-                    rootView = inflater.inflate(R.layout.fragment_main, container, false);
-                    break;
-                case 2:
-                    rootView = inflater.inflate(R.layout.fragment_main2, container, false);
-                    //String[] caps = {"Capitulo 1","Capitulo 2","Capitulo 3","Capitulo 4",};
-                    //ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(),simple_list_item_1,caps);
-                    //lv1 = (ListView) rootView.findViewById(R.id.listCapitulos);
-                    //lv1.setAdapter(arrayAdapter);
-                    break;
-                case 3:
-                    rootView = inflater.inflate(R.layout.fragment_main3, container, false);
-                    TextView textView2 = (TextView) rootView.findViewById(R.id.section_label3);
-                    textView2.setText("care nana");
-                    break;
-            }
-
+            View rootView = inflater.inflate(R.layout.fragment_cap1, container, false);
+            TextView title = (TextView) rootView.findViewById(R.id.section_title);
+            TextView text = (TextView) rootView.findViewById(R.id.section_text);
+            ImageView image = (ImageView) rootView.findViewById(R.id.section_image);
+            DataDbHelper dataDbHelper = new DataDbHelper(getContext());
+            SQLiteDatabase db = dataDbHelper.getReadableDatabase();
+//            Cursor cursor = db.query(
+//                    DataContract.DataEntry.tableName,
+//                    null,
+//                    null,
+//                    null,
+//                    null,
+//                    null,
+//                    null
+//            );
+            //cursor.moveToPosition(getArguments().getInt(ARG_SECTION_NUMBER)-1);
+            Cursor cursor = db.rawQuery("SELECT * FROM "+DataContract.DataEntry.tableName,null);
+            cursor.moveToFirst();
+            Log.d("filas",""+cursor.getCount());
+            title.setText(cursor.getString(1));
+            text.setText(cursor.getString(2));
+            image.setImageDrawable(getResources().getDrawable(cursor.getInt(3)));
             return rootView;
         }
     }
-    public void botonCapitulo1Action(View v){
-        Intent intent = new Intent(getApplicationContext(),Main2Activity.class);
-        startActivity(intent);
-    }
+
+
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
@@ -166,18 +154,18 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 2;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "RETOS";
+                    return "SECTION 1";
                 case 1:
-                    return "TEORIA";
+                    return "SECTION 2";
                 case 2:
-                    return "COMPARA";
+                    return "SECTION 3";
             }
             return null;
         }
