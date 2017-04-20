@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/colorPrimaryDark">
+
+    <Button
+        android:id="@+id/botonCapitulo1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="Capitulo 1"
+        android:onClick="botonCapituloAction"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorBlanco"
+        android:layout_margin="@dimen/small2"
+        />
+    <Button
+        android:id="@+id/botonCapitulo2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="Capitulo 2"
+        android:onClick="botonCapituloAction"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorBlanco"
+        android:layout_margin="@dimen/small2"
+        />
+    <Button
+        android:id="@+id/botonCapitulo3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="Capitulo 3"
+        android:onClick="botonCapituloAction"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorBlanco"
+        android:layout_margin="@dimen/small2"
+        />
+    <Button
+        android:id="@+id/botonCapitulo4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="Capitulo 4"
+        android:onClick="botonCapituloAction"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorBlanco"
+        android:layout_margin="@dimen/small2"
+        />
+    <Button
+        android:id="@+id/botonCapitulo5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="Capitulo 5"
+        android:onClick="botonCapituloAction"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorBlanco"
+        android:layout_margin="@dimen/small2"
+        />
+    <Button
+        android:id="@+id/botonCapitulo6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="Capitulo 6"
+        android:onClick="botonCapituloAction"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorBlanco"
+        android:layout_margin="@dimen/small2"
+        />
+    <Button
+        android:id="@+id/botonCapitulo7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="Capitulo 7"
+        android:onClick="botonCapituloAction"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorBlanco"
+        android:layout_margin="@dimen/small2"
+        />
+    <Button
+        android:id="@+id/botonCapitulo8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="Capitulo 8"
+        android:onClick="botonCapituloAction"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorBlanco"
+        android:layout_margin="@dimen/small2"
+        />
+
+
+</LinearLayout>

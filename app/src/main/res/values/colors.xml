@@ -6,4 +6,5 @@
     <color name="colorBasico">#ffff66</color>
     <color name="colorMedio">#ff6600</color>
     <color name="colorAvanzado">#66ff33</color>
+    <color name="colorBlanco">#ffffff</color>
 </resources>

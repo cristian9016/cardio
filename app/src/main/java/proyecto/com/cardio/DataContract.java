@@ -15,6 +15,7 @@ public class DataContract {
         public static final String TITLE = "title";
         public static final String TEXT = "text";
         public static final String IMAGE = "image";
+        public static final String IDCHAPTER = "idchapter";
 
     }
 

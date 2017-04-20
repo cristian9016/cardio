@@ -1,10 +1,7 @@
 package proyecto.com.cardio;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -19,9 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -123,27 +118,24 @@ public class MainActivity extends AppCompatActivity {
             ListView lv1;
             switch (getArguments().getInt(ARG_SECTION_NUMBER)){
                 case 1:
-                    rootView = inflater.inflate(R.layout.fragment_main, container, false);
+                    rootView = inflater.inflate(R.layout.fragment_retos, container, false);
                     break;
                 case 2:
-                    rootView = inflater.inflate(R.layout.fragment_main2, container, false);
-                    //String[] caps = {"Capitulo 1","Capitulo 2","Capitulo 3","Capitulo 4",};
-                    //ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(),simple_list_item_1,caps);
-                    //lv1 = (ListView) rootView.findViewById(R.id.listCapitulos);
-                    //lv1.setAdapter(arrayAdapter);
+                    rootView = inflater.inflate(R.layout.fragment_capitulos, container, false);
                     break;
                 case 3:
-                    rootView = inflater.inflate(R.layout.fragment_main3, container, false);
-                    TextView textView2 = (TextView) rootView.findViewById(R.id.section_label3);
-                    textView2.setText("care nana");
+                    rootView = inflater.inflate(R.layout.fragment_compara, container, false);
+                    GridView gridView = (GridView) rootView.findViewById(R.id.gridView);
                     break;
             }
 
             return rootView;
         }
     }
-    public void botonCapitulo1Action(View v){
+    public void botonCapituloAction(View v){
+        String id = ""+v.getId();
         Intent intent = new Intent(getApplicationContext(),Main2Activity.class);
+        intent.putExtra("idCap",id);
         startActivity(intent);
     }
     /**

@@ -37,6 +37,7 @@ public class Main2Activity extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    String idCap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,7 @@ public class Main2Activity extends AppCompatActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
+        idCap = getIntent().getStringExtra("idCap");
     }
 
 
@@ -88,7 +89,7 @@ public class Main2Activity extends AppCompatActivity {
          */
 
         private static final String ARG_SECTION_NUMBER = "section_number";
-
+        static String idCapitulo;
         public PlaceholderFragment() {
         }
 
@@ -96,11 +97,12 @@ public class Main2Activity extends AppCompatActivity {
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
+        public static PlaceholderFragment newInstance(int sectionNumber,String id) {
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
+            idCapitulo = id;
             return fragment;
         }
 
@@ -113,22 +115,16 @@ public class Main2Activity extends AppCompatActivity {
             ImageView image = (ImageView) rootView.findViewById(R.id.section_image);
             DataDbHelper dataDbHelper = new DataDbHelper(getContext());
             SQLiteDatabase db = dataDbHelper.getReadableDatabase();
-//            Cursor cursor = db.query(
-//                    DataContract.DataEntry.tableName,
-//                    null,
-//                    null,
-//                    null,
-//                    null,
-//                    null,
-//                    null
-//            );
-            //cursor.moveToPosition(getArguments().getInt(ARG_SECTION_NUMBER)-1);
-            Cursor cursor = db.rawQuery("SELECT * FROM "+DataContract.DataEntry.tableName,null);
+            Cursor cursor = db.rawQuery("SELECT * FROM "+ DataContract.DataEntry.tableName+" WHERE "+ DataContract.DataEntry.IDCHAPTER +" = '"+idCapitulo+"'",null);
             cursor.moveToFirst();
-            Log.d("filas",""+cursor.getCount());
             title.setText(cursor.getString(1));
             text.setText(cursor.getString(2));
             image.setImageDrawable(getResources().getDrawable(cursor.getInt(3)));
+            cursor.moveToNext();
+
+
+
+
             return rootView;
         }
     }
@@ -148,7 +144,7 @@ public class Main2Activity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            return PlaceholderFragment.newInstance(position + 1,idCap);
         }
 
         @Override

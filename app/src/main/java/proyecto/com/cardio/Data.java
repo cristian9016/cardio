@@ -11,12 +11,22 @@ public class Data {
     private String title;
     private String text;
     private Integer image;
+    private String idCapitulo;
 
-    public Data(Integer id,String title, String text, Integer image) {
+    public Data(Integer id,String title, String text, Integer image, String idCapitulo) {
         this.id = id;
         this.title = title;
         this.text = text;
         this.image = image;
+        this.idCapitulo = idCapitulo;
+    }
+
+    public String getIdCapitulo() {
+        return idCapitulo;
+    }
+
+    public void setIdCapitulo(String idCapitulo) {
+        this.idCapitulo = idCapitulo;
     }
 
     public Integer getId() {
