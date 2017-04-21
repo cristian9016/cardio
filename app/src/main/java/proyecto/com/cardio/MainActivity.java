@@ -20,6 +20,8 @@ import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -125,7 +127,11 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case 3:
                     rootView = inflater.inflate(R.layout.fragment_compara, container, false);
-                    GridView gridView = (GridView) rootView.findViewById(R.id.gridView);
+                    GridView gv = (GridView) rootView.findViewById(R.id.gridView);
+                    ImagenesHelper imagenesHelper = new ImagenesHelper();
+                    List<ImagenesData> listImagenes = imagenesHelper.cargarImagenes();
+                    GridAdapter gridAdapter = new GridAdapter(getContext(),listImagenes);
+                    gv.setAdapter(gridAdapter);
                     break;
             }
 

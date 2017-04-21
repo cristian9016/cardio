@@ -7,4 +7,6 @@
     <color name="colorMedio">#ff6600</color>
     <color name="colorAvanzado">#66ff33</color>
     <color name="colorBlanco">#ffffff</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>

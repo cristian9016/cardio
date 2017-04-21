@@ -20,6 +20,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class Main2Activity extends AppCompatActivity {
 
 
@@ -115,16 +117,11 @@ public class Main2Activity extends AppCompatActivity {
             ImageView image = (ImageView) rootView.findViewById(R.id.section_image);
             DataDbHelper dataDbHelper = new DataDbHelper(getContext());
             SQLiteDatabase db = dataDbHelper.getReadableDatabase();
-            Cursor cursor = db.rawQuery("SELECT * FROM "+ DataContract.DataEntry.tableName+" WHERE "+ DataContract.DataEntry.IDCHAPTER +" = '"+idCapitulo+"'",null);
-            cursor.moveToFirst();
-            title.setText(cursor.getString(1));
-            text.setText(cursor.getString(2));
-            image.setImageDrawable(getResources().getDrawable(cursor.getInt(3)));
-            cursor.moveToNext();
-
-
-
-
+            List<Data> listaCargada = dataDbHelper.cargarLista(db);
+            Data x = listaCargada.get(getArguments().getInt(ARG_SECTION_NUMBER)-1);
+            title.setText(x.getTitle());
+            text.setText(x.getText());
+            image.setImageDrawable(getResources().getDrawable(x.getImage()));
             return rootView;
         }
     }

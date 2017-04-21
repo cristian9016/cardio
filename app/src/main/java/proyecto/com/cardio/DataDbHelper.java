@@ -2,10 +2,14 @@ package proyecto.com.cardio;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static proyecto.com.cardio.Main2Activity.PlaceholderFragment.idCapitulo;
 
 /**
  * Created by root on 18/04/17.
@@ -71,6 +75,15 @@ public class DataDbHelper extends SQLiteOpenHelper {
 
     }
 
+    public List<Data> cargarLista(SQLiteDatabase db){
+        List<Data> lista = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM "+ DataContract.DataEntry.tableName+" WHERE "+ DataContract.DataEntry.IDCHAPTER +" = '"+idCapitulo+"'",null);
+        while(cursor.moveToNext()){
+            Data data = new Data(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getInt(3),cursor.getString(4));
+            lista.add(data);
+        }
+        return lista;
 
+    }
 
 }
