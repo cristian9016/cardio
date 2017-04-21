@@ -12,5 +12,7 @@
         android:numColumns="auto_fit"
         android:padding="@dimen/small"
         android:verticalSpacing="@dimen/small"
+        android:focusable="true"
+        android:clickable="true"
         />
 </LinearLayout>

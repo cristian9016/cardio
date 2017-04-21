@@ -47,12 +47,11 @@ public class GridAdapter extends BaseAdapter {
             v = View.inflate(context,R.layout.imagelayout,null);
         }
 
-        ImagenesData imagenesData = (ImagenesData) getItem(position);
+        final ImagenesData imagenesData = (ImagenesData) getItem(position);
 //        int imagenId = imagenesData.getId();
         ImageView image = (ImageView) v.findViewById(R.id.imageGridviewLayout);
         Glide.with(context).load(imagenesData.getId()).into(image);
 //        image.setImageResource(imagenId);
-
         return v;
     }
 
