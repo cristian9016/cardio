@@ -1,5 +1,6 @@
 package proyecto.com.cardio;
 
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.github.chrisbanes.photoview.PhotoView;

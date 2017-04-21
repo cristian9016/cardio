@@ -17,29 +17,29 @@
         android:gravity="center"
         />
 
-    <ImageView
-        android:id="@+id/section_image"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/section_title"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/small"
-        />
+        <ImageView
+            android:id="@+id/section_image"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_marginTop="@dimen/small"
+            android:clickable="true"
+            android:layout_below="@id/section_title"
+            android:layout_centerHorizontal="true"
+            />
 
         <TextView
+            android:gravity="center"
             android:id="@+id/section_text"
-            android:textSize="15sp"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:maxLines="7"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:scrollbars="vertical"
-            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/small"
             android:layout_below="@id/section_image"
-            android:layout_marginTop="@dimen/small"/>
+            android:layout_centerHorizontal="true"
+            android:paddingLeft="@dimen/small"
+            android:paddingRight="@dimen/small"
+            android:paddingBottom="@dimen/small"
 
-
-
-
-
-
+            />
 </RelativeLayout>

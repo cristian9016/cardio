@@ -1,7 +1,9 @@
 package proyecto.com.cardio;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -10,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -120,8 +124,20 @@ public class Main2Activity extends AppCompatActivity {
             List<Data> listaCargada = dataDbHelper.cargarLista(db);
             Data x = listaCargada.get(getArguments().getInt(ARG_SECTION_NUMBER)-1);
             title.setText(x.getTitle());
+            text.setMovementMethod(new ScrollingMovementMethod());
             text.setText(x.getText());
             image.setImageDrawable(getResources().getDrawable(x.getImage()));
+            image.setTag(x.getImage());
+
+            image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int x = (int) v.getTag();
+                    Intent intent = new Intent(getContext(),FullScreenImagenActivity.class);
+                    intent.putExtra("idimagen",""+x);
+                    startActivity(intent);
+                }
+            });
             return rootView;
         }
     }
