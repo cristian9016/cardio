@@ -1,4 +1,4 @@
-package proyecto.com.cardio;
+package proyecto.com.cardio.database;
 
 import android.provider.BaseColumns;
 

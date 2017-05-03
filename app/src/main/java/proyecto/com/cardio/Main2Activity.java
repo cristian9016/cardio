@@ -1,9 +1,7 @@
 package proyecto.com.cardio;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -12,8 +10,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,29 +17,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.List;
 
+import proyecto.com.cardio.database.DataDbHelper;
+import proyecto.com.cardio.models.Data;
+
+
+
 public class Main2Activity extends AppCompatActivity {
 
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
     private ViewPager mViewPager;
     String idCap;
+    public static int tamanoLista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +84,7 @@ public class Main2Activity extends AppCompatActivity {
          */
 
         private static final String ARG_SECTION_NUMBER = "section_number";
-        static String idCapitulo;
+        public static String idCapitulo;
         public PlaceholderFragment() {
         }
 
@@ -121,10 +110,11 @@ public class Main2Activity extends AppCompatActivity {
             ImageView image = (ImageView) rootView.findViewById(R.id.section_image);
             DataDbHelper dataDbHelper = new DataDbHelper(getContext());
             SQLiteDatabase db = dataDbHelper.getReadableDatabase();
+
             List<Data> listaCargada = dataDbHelper.cargarLista(db);
             Data x = listaCargada.get(getArguments().getInt(ARG_SECTION_NUMBER)-1);
             title.setText(x.getTitle());
-            text.setMovementMethod(new ScrollingMovementMethod());
+            //text.setMovementMethod(new ScrollingMovementMethod());
             text.setText(x.getText());
             image.setImageDrawable(getResources().getDrawable(x.getImage()));
             image.setTag(x.getImage());
@@ -142,11 +132,6 @@ public class Main2Activity extends AppCompatActivity {
         }
     }
 
-
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
@@ -163,7 +148,7 @@ public class Main2Activity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 2;
+            return 18;
         }
 
         @Override

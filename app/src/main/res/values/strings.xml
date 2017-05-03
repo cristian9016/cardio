@@ -8,4 +8,15 @@
     <string name="title_activity_fullscreen_image">FullscreenImageActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="capitulo_1">Capitulo 1</string>
+    <string name="capitulo_2">Capitulo 2</string>
+    <string name="capitulo_3">Capitulo 3</string>
+    <string name="capitulo_4">Capitulo 4</string>
+    <string name="capitulo_5">Capitulo 5</string>
+    <string name="capitulo_6">Capitulo 6</string>
+    <string name="capitulo_7">Capitulo 7</string>
+    <string name="capitulo_8">Capitulo 8</string>
+    <string name="basico">BASICO</string>
+    <string name="medio">MEDIO</string>
+    <string name="avanzado">AVANZADO</string>
 </resources>

@@ -1,7 +1,6 @@
-package proyecto.com.cardio;
+package proyecto.com.cardio.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -10,6 +9,9 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
+
+import proyecto.com.cardio.R;
+import proyecto.com.cardio.models.ImagenesData;
 
 /**
  * Created by root on 20/04/17.
@@ -44,7 +46,7 @@ public class GridAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
         if(convertView == null){
-            v = View.inflate(context,R.layout.imagelayout,null);
+            v = View.inflate(context, R.layout.imagelayout,null);
         }
 
         final ImagenesData imagenesData = (ImagenesData) getItem(position);

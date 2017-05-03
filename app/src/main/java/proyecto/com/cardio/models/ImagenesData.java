@@ -1,4 +1,4 @@
-package proyecto.com.cardio;
+package proyecto.com.cardio.models;
 
 /**
  * Created by root on 20/04/17.

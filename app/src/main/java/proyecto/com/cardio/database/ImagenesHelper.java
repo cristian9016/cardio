@@ -1,7 +1,10 @@
-package proyecto.com.cardio;
+package proyecto.com.cardio.database;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import proyecto.com.cardio.R;
+import proyecto.com.cardio.models.ImagenesData;
 
 /**
  * Created by root on 20/04/17.
